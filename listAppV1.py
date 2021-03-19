@@ -36,7 +36,7 @@ def mainProgram():
             elif choice == "4":
                 randomSearch()
             elif choice == "5":
-                linearSearch
+                linearSearch()
             elif choice == "6":
                 print(myList)
             else:
@@ -67,11 +67,15 @@ def randomSearch():
     print(myList[random.randint(0, len(myList)-1)])
 
 def linearSearch():
+    #try to add: 1) a count of how many times a number is present
     print("We're going to search each item one by one!")
     searchItem = input("What are you looking for...?   ")
-    for x in range(len(yList)):
+    appCount = 0
+    for x in range(len(myList)):
         if myList[x] == int(searchItem):
             print("Your item is at index position {}".format(x))
+            appCount = appCount + 1
+    print("You number appeared {} times in the list".format(appCount))
     
 #dunder main -> Double Underscore---dunder
 if __name__ == "__main__":
