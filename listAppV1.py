@@ -13,6 +13,7 @@ Program Goals:
 """
 import random
 myList = []
+unique_list = []
 
 def mainProgram():
     while True:
@@ -24,8 +25,9 @@ def mainProgram():
 3. Return a value at an index
 4. Random Search
 5. Linear Search
-6. Print contents of list
-7. Quit Program    """)
+6. Sort List
+7. Print List
+8. Quit Program    """)
             #add a way to catch bad user responses
             if choice == "1":
                 addToList()
@@ -38,7 +40,9 @@ def mainProgram():
             elif choice == "5":
                 linearSearch()
             elif choice == "6":
-                print(myList)
+               sortLists(myList)
+            elif choice == "8":
+                printLists()
             else:
                 break
         except:
@@ -50,7 +54,7 @@ def addToList():
     myList.append(int(newItem))
 
 def addMany():
-    print("We're gonna adda bunch of integers to your list!")
+    print("We're gonna add a bunch of integers to your list!")
     numToAdd = input("How many numbers do you want to add   ")
     numRange = input("How high do you want the numbers to go?   ")
     for x in range(0, int(numToAdd)):
@@ -76,6 +80,25 @@ def linearSearch():
             print("Your item is at index position {}".format(x))
             appCount = appCount + 1
     print("You number appeared {} times in the list".format(appCount))
+
+def sortLists(myList):
+    for x in myList:
+        if x not in unique_list:
+            unique_list.append(x)
+    unique_list.sort()
+    showMe = input("Do you want to see your list of unique, sorted items?  Y/N   ")
+    if showMe.lower == "y":
+        print(unique_list)
+
+def printLists():
+    if len(unique_list) == 0:
+        print(myList)
+    else:
+        whichOne = input("Which list do you want to see? Sorted or unsorted?   ")
+        if whichOne.lower() == "sorted":
+            print(unique_list)
+        else:
+            print(myList)
     
 #dunder main -> Double Underscore---dunder
 if __name__ == "__main__":
