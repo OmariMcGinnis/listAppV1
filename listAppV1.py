@@ -26,8 +26,10 @@ def mainProgram():
 4. Random Search
 5. Linear Search
 6. Sort List
-7. Print List
-8. Quit Program    """)
+7. Recursive Binary Search
+8. Iterative Binary Search
+9. Print List
+10. Quit Program    """)
             #add a way to catch bad user responses
             if choice == "1":
                 addToList()
@@ -41,7 +43,17 @@ def mainProgram():
                 linearSearch()
             elif choice == "6":
                sortLists(myList)
+            elif choice == "7":
+                binSearch = input("What number are you looking for   ")
+                recursiveBinarySearch(unique_list, 0, len(unique_list)-1, int(binSearch))
             elif choice == "8":
+                binSearch = input("What number are you looking for   ")
+                result = iterativeBinarySearch(unique_list, int(binSearch))
+                if result != 1:
+                    print("Your number is a index position []".format(result))
+                else:
+                    print("Your number is not found in that list, bud!")
+            elif choice == "9":
                 printLists()
             else:
                 break
@@ -115,6 +127,42 @@ def printLists():
             print(unique_list)
         else:
             print(myList)
+
+def recursiveBinarySearch(unique_list, low, high, x):
+    if high >= low:
+        mid = (high + low) // 2
+
+        if unique_list[mid] == x:
+            print("Your number is at index position {}".format(mid))
+            return mid
+    
+        elif unique_list[mid] > x:
+            return recursiveBinarySearch(unique_list, low, mid - 1, x)
+
+        else:
+            return recursiveBinarySearch(unique_list, mid + 1, high, x)
+
+    else:
+        print("Your number isn't here!")
+
+def iterativeBinarySearch(unique_list, x):
+    low = 0
+    high = len(unique_list)-1
+    mid = 0
+
+    while low <= high:
+        mid = (high + low) // 2
+
+        if unique_list[mid] < x:
+            low = mid + 1
+
+        elif unique_list[mid] > x:
+            high = mid - 1
+        else:
+            return mid
+    return -1
+
+
     
 #dunder main -> Double Underscore---dunder
 if __name__ == "__main__":
