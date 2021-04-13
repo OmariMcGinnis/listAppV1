@@ -29,7 +29,8 @@ def mainProgram():
 7. Recursive Binary Search
 8. Iterative Binary Search
 9. Print List
-10. Quit Program    """)
+10. Clear List
+11. Quit Program    """)
             #add a way to catch bad user responses
             if choice == "1":
                 addToList()
@@ -55,6 +56,8 @@ def mainProgram():
                     print("Your number is not found in that list, bud!")
             elif choice == "9":
                 printLists()
+            elif choice == "10":
+                clearList()
             else:
                 break
         except:
@@ -161,6 +164,13 @@ def iterativeBinarySearch(unique_list, x):
         else:
             return mid
     return -1
+
+def clearList():
+    print("Time to wipe this list!")
+    choose = input("Are you sure you want to clear your list?   Y/N   ")
+    if choose.lower == "y":
+        myList.clear()
+
 
 
     
