@@ -15,6 +15,13 @@ import random
 myList = []
 unique_list = []
 
+"""
+mainProgram() is as it states, the main program. It holds the choice variable
+that takes user input, and determines what pathway it will take. It also has an
+error catching print statement at the end for whenever a user prints a number that
+is not made a choice.
+"""
+
 def mainProgram():
     while True:
         try:
@@ -62,28 +69,54 @@ def mainProgram():
                 break
         except:
             print("You caught an error!")
+"""
+addToList is another function that takes user input and adds it to a list
+called "myList". It makes sure that the user can only input integers, or else
+it will not work properly.
+"""
 
 def addToList():
     print("Adding to a list! Great choice!")
     newItem = input("Type an integer here!  ")
     myList.append(int(newItem))
 
+"""
+addMany() inputs multiple integers into myList at once. To do this, it gets a
+range, as well as the amount of numbers that should be added to the list from
+the user. It then gathers random integers ranging from the user's input, and
+adds them all in. 
+"""
 def addMany():
     print("We're gonna add a bunch of integers to your list!")
     numToAdd = input("How many numbers do you want to add   ")
     numRange = input("How high do you want the numbers to go?   ")
     for x in range(0, int(numToAdd)):
-        myList.appent(random.randit(0, int(numRange)))
+        myList.append(random.randit(0, int(numRange)))
     print("Your list is complete")
+
+"""
+indexValues allows a user to find the index position of a certain integer in
+myList. It uses a variable called "indexPos" that uses user input to determine
+the number that the system should be searching for. Once found, it prints.
+"""
 
 def indexValues():
     print("Curious about an index position? ME TOO!")
     indexPos = input("What index position would you like to check out?  ")
     print(myList[int(indexPos)])
 
+"""
+randomSearch finds a random integer in myList, and prints it.
+"""
 def randomSearch():
     print("RaNdOm SeArCh?!?")
     print(myList[random.randint(0, len(myList)-1)])
+
+"""
+linearSearch is a function that helps to find certan numbers one by one. It asks the user
+what they want to find in myList, and then helps to create a range to look for that number at.
+It then prints the number's index position, and the number of times it shows up in the list.
+"""
 
 def linearSearch():
     #try to add: 1) a count of how many times a number is present
@@ -95,6 +128,12 @@ def linearSearch():
             print("Your item is at index position {}".format(x))
             appCount = appCount + 1
     print("You number appeared {} times in the list".format(appCount))
+
+"""
+recursiveBinarySearch essencially helps to find the index position of a number.
+The way it does this is by splitting the list into sections to make finding your
+number easier. If it does not find your number, it prints an error message.
+"""
 
 def recursiveBinarySearch(unique_list, low, high, x):
     if high >= low:
@@ -110,7 +149,11 @@ def recursiveBinarySearch(unique_list, low, high, x):
 
     else:
         print("Your number isn't here!")
-    
+
+"""
+sortLists sorts each list and makes sure that there are no copies of specific numbers.
+If it finds a copy, it ignores it, and only prints one of the mimicked number.
+"""
 
 def sortLists(myList):
     for x in myList:
@@ -121,6 +164,10 @@ def sortLists(myList):
     if showMe.lower == "y":
         print(unique_list)
 
+"""
+printLists is a function that asks the user which list they want to see. Based on
+the user's response, it will print the list. 
+"""
 def printLists():
     if len(unique_list) == 0:
         print(myList)
@@ -148,6 +195,10 @@ def recursiveBinarySearch(unique_list, low, high, x):
     else:
         print("Your number isn't here!")
 
+"""
+iterativeBinarySearch is the same thing as recursiveBinarySearch, but the only difference is that it does not loop as much
+as recursiveBinarySearch does.
+"""
 def iterativeBinarySearch(unique_list, x):
     low = 0
     high = len(unique_list)-1
@@ -164,6 +215,10 @@ def iterativeBinarySearch(unique_list, x):
         else:
             return mid
     return -1
+
+"""
+clearList does exactly what it's called, and erases myList completely.
+"""
 
 def clearList():
     print("Time to wipe this list!")
