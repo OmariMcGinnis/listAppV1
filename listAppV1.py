@@ -1,6 +1,6 @@
 """
 Program Goals:
-1. Get input fromt he user (at multiple stages)
+1. Get input from the user (at multiple stages)
 2. Convert some, but not all, inputs to ints from strings.
 3. We need to provide the user with choices:
     a. Add more values to a list
